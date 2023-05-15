@@ -1,10 +1,11 @@
 # Weight of Evidence
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
 
-def compute_woe( df: pd.DataFrame,
-                 id_column_name: str,
+def compute_woe( df,
+                 id_column_name,
                  feature_column_name,
                  target_column_name,
                  sort_by_woe=True
@@ -40,9 +41,9 @@ def compute_woe( df: pd.DataFrame,
         matrix = matrix.sort_values(by="WoE")
     return matrix
 
-def plot_woe_by_category(df, rotate=False) -> None:
+def plot_woe_by_category(df, rotate=False):
     woe_column = "WoE"
-    _, ax = plt.subplots(1, 1, figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=(13, 6))
     ax.plot(df.index, df[woe_column], "o--", color="black")
     ax.set_xlabel(df.index.name.capitalize())
     if rotate:
