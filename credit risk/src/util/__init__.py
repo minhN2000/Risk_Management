@@ -1,1 +1,1 @@
-from .woe import compute_woe, plot_woe_by_category
+from .woe import compute_woe, plot_woe_by_category, display_woe

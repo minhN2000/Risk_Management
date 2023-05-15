@@ -51,3 +51,18 @@ def plot_woe_by_category(df, rotate=False):
     ax.set_ylabel(woe_column)
     plt.grid(alpha=0.3, linestyle="--")
     plt.show()
+
+def display_woe(df,
+                 id_column_name,
+                 feature_column_name,
+                 target_column_name,
+                 sort_by_woe=True) :
+    woe_df = compute_woe(df,
+                     id_column_name,
+                     feature_column_name,
+                     target_column_name)
+    
+    iv_val = woe_df['IV'].sum()
+    print(f'IV value: {iv_val}')
+    display(woe_df)
+    plot_woe_by_category(woe_df.sort_index())
