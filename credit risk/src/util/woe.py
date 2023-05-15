@@ -43,7 +43,7 @@ def compute_woe( df,
 
 def plot_woe_by_category(df, rotate=False):
     woe_column = "WoE"
-    fig, ax = plt.subplots(figsize=(13, 6))
+    fig, ax = plt.subplots(figsize=(18, 7))
     ax.plot(df.index, df[woe_column], "o--", color="black")
     ax.set_xlabel(df.index.name.capitalize())
     if rotate:
