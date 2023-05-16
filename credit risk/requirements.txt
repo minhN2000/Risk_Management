@@ -1,0 +1,7 @@
+seaborn
+pandas==1.4.3
+sklearn==0.0.post1
+sklego==0.0
+xgboost==1.7.5
+joblib==1.2.0
+matplotlib==3.5.0
