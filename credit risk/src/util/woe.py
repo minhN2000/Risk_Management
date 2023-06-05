@@ -10,7 +10,19 @@ def compute_woe( df,
                  target_column_name,
                  sort_by_woe=True
                 ):
+    """
+    This function computes the Weight of Evidence (WoE) and Information Value (IV) for a given feature.
 
+    Parameters:
+    df (pd.DataFrame): Input dataframe.
+    id_column_name (str): Name of the column to be used for aggregation.
+    feature_column_name (str): Name of the feature for which WoE and IV should be computed.
+    target_column_name (str): Name of the target variable.
+    sort_by_woe (bool): If True, the output will be sorted by WoE.
+
+    Returns:
+    matrix (pd.DataFrame): A dataframe containing the WoE and IV for each category of the feature.
+    """
     # contigency matrix
     matrix = pd.pivot_table(
         data=df,
@@ -42,6 +54,16 @@ def compute_woe( df,
     return matrix
 
 def plot_woe_by_category(df, rotate=False):
+    """
+    This function plots the WoE for each category of a given feature.
+
+    Parameters:
+    df (pd.DataFrame): Dataframe containing the WoE for each category of the feature. It should be the output of the 'compute_woe' function.
+    rotate (bool): If True, the x-axis labels will be rotated 90 degrees. 
+
+    Returns:
+    None
+    """
     woe_column = "WoE"
     fig, ax = plt.subplots(figsize=(18, 7))
     ax.plot(df.index, df[woe_column], "o--", color="black")
@@ -57,6 +79,19 @@ def display_woe(df,
                  feature_column_name,
                  target_column_name,
                  sort_by_woe=True) :
+    """
+    This function computes the WoE and IV for a given feature, displays the result and plots the WoE for each category of the feature.
+
+    Parameters:
+    df (pd.DataFrame): Input dataframe.
+    id_column_name (str): Name of the column to be used for aggregation.
+    feature_column_name (str): Name of the feature for which WoE and IV should be computed.
+    target_column_name (str): Name of the target variable.
+    sort_by_woe (bool): If True, the output will be sorted by WoE.
+
+    Returns:
+    None
+    """
     woe_df = compute_woe(df,
                      id_column_name,
                      feature_column_name,
